@@ -5,19 +5,58 @@ Apply the Huffman and Shannon-Fano to this source.
 Show that by drawing the tree diagram, and 
 Calculate the average code word length, entropy, variance, redundancy, and efficiency.
 # Tools Required:
+Python IDE
 # Program:
 ```
-Write the program 
+#Huffman and Shannon-Fano coding
+import numpy as np
+import math 
+L  = 0
+hs = 0
+p = []
+lk = []
+n = int(input("Enter the number of Samples : "))
+for i in range (n): 
+    pr = float(input(f"Enter the probability of sample values {i + 1}: "))  
+    p.append(pr)
+for j in range (n): 
+    l = float(input(f"Enter the length of the sample values {j + 1}: "))  
+    lk.append(l)
+# Avg length of the code word
+for k in range (n):
+    Avg1 = p[k] * lk[k]
+    L = L + Avg1
+# Entropy
+for k in range (n):
+    e = p[k] * math.log(1 / p[k], 2)
+    hs = hs + e
+hs = round(hs,3)
+# Efficiency
+eff =  hs / L
+eff = round(eff,3)
+# Redundancy 
+red =  round(1 - eff,3) 
+# Variance
+var = 0
+for k in range(n):
+    var1 = p[k] * (lk[k]-L)**2
+    var = var + var1
+var = round(var,3)
+print(f"Average Codeword Length is : {L}")
+print(f"Entropy is : {hs}")
+print(f"Efficiency is : {eff}")
+print(f"Redudancy is : {red}")
+print(f"Variance is : {var}") 
 ```
 # Calculation:
-```
-Compare the manually calculated value and the observed practical value.
-```
+
+![dc 2_page-0001](https://github.com/user-attachments/assets/260583d3-9005-4031-a7fd-ddfe6aee8592)
+![dc 3_page-0001](https://github.com/user-attachments/assets/f86f6dd0-a1b1-4a52-b450-0d8aab423409)
+![dc 1_page-0001](https://github.com/user-attachments/assets/fcf2a6dd-8e1a-4c9e-8145-017e22a1f7df)
+
+
 # Output
-```
-Attach the Output waveform
-``` 
+<img width="687" height="525" alt="Screenshot 2025-09-11 203845" src="https://github.com/user-attachments/assets/9c1ccb1d-22e4-4edc-a1db-7a29c9f39187" />
+
 # Results:
-```
-Write the conclusion
-```
+The Huffman and Shannon-Fano coding techniques have been successfully applied to the given source. The average codeword length, entropy, variance, redundancy, and efficiency have been computed.
